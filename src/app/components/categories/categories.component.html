@@ -1,5 +1,20 @@
-<mat-card><mat-card-title>Categories list</mat-card-title><mat-card-content>
-    <section>
-      <mat-checkbox *ngFor="let item of categories$ | async">{{item}}</mat-checkbox>
+<mat-card style="width: 100%;"><mat-card-title>Categories list</mat-card-title><mat-card-content>
+    <section *ngIf="categories$ |async as checkbox; else loading" >
+      <ng-container *ngIf="checkbox.length > 0; else empty" 
+      ><mat-checkbox *ngFor="let item of checkbox">{{item}}</mat-checkbox></ng-container>
     </section>
+    <ng-template #empty>
+      <img src="https://cdn-icons-png.flaticon.com/512/8316/8316731.png" alt="red empty folder" >
+    
+      <a href="https://www.flaticon.com/free-icons/folder" title="folder icons" style="font-size: 12px;">Folder icons created by juicy_fish - Flaticon</a>
+      </ng-template>
+      
+    
+    <ng-template #loading>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+      </ng-template>
   </mat-card-content></mat-card>
