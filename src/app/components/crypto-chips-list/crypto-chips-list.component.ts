@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, map, Observable } from 'rxjs';
 import { CryptoModel } from '../../models/crypto.model';
 import { CryptoService } from '../../services/crypto.service';
 
